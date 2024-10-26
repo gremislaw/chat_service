@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package chat_service.api;
+option go_package = "api/";
+
+message ChatMessage {
+  string message = 1;
+  int64 sender_id = 2;
+  int64 receiver_id = 3;
+}
+
+message Response {
+    string response = 1;
+}
+
+message Empty {}
+
+service ChatService {
+    rpc HandleCommunication(stream ChatMessage) returns(stream ChatMessage);
+}

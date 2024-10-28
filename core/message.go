@@ -30,20 +30,7 @@ var messageHandleObject = messageHandle{}
 type ChatServer struct {
 }
 
-func (s *ChatServer) HandleCommunication(stream api.ChatService_HandleCommunicationServer) error {
-
-	clientUniqueCode := int64(rand.Intn(1e6))
-	errch := make(chan error)
-
-	go receiveFromStream(stream, clientUniqueCode, errch)
-
-	go sendToStream(stream, clientUniqueCode, errch)
-
-	return <-errch
-
-}
-
-func receiveFromStream(stream api.ChatService_HandleCommunicationServer, clientUniqueCode int64, errch chan error) {
+func ReceiveFromStream(stream api.ChatService_HandleCommunicationServer, clientUniqueCode int64, errch chan error) {
 	for {
 		msg, err := stream.Recv()
 		if err == io.EOF {
@@ -53,6 +40,7 @@ func receiveFromStream(stream api.ChatService_HandleCommunicationServer, clientU
 				log.Printf("Error receiving message: %v", err)
 				errch <- err
 		} else {
+			
 			messageHandleObject.mu.Lock()
 			messageHandleObject.MQue = append(messageHandleObject.MQue, message{
 				Body:       msg.Body,
@@ -63,11 +51,12 @@ func receiveFromStream(stream api.ChatService_HandleCommunicationServer, clientU
 				},
 			})
 			log.Printf("Received message from %s: %s", msg.SenderName, msg.Body)
+			messageHandleObject.mu.Unlock()
 		}
 	}
 }
 
-func sendToStream(stream api.ChatService_HandleCommunicationServer, clientId int64, errch chan error) {
+func SendToStream(stream api.ChatService_HandleCommunicationServer, clientId int64, errch chan error) {
 	for {
 		for {
 			time.Sleep(500 * time.Millisecond)

@@ -6,6 +6,8 @@ import (
 	"os"
 	"database/sql"
 	"chat_service/api"
+	"chat_service/core"
+	"math/rand"
 )
 
 type ChatServiceServer struct {
@@ -68,4 +70,16 @@ func (cfg config) IsValid() bool {
 		res = false
 	}
 	return res
+}
+
+func (s *ChatServiceServer) HandleCommunication(stream api.ChatService_HandleCommunicationServer) error {
+
+	clientUniqueCode := int64(rand.Intn(1e6))
+	errch := make(chan error)
+
+	go core.ReceiveFromStream(stream, clientUniqueCode, errch)
+	go core.SendToStream(stream, clientUniqueCode, errch)
+
+	return <-errch
+
 }

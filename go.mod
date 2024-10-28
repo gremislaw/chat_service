@@ -8,6 +8,7 @@ require google.golang.org/grpc v1.67.1
 require google.golang.org/protobuf v1.35.1
 
 require (
+	github.com/gremislaw/chat_service/api v0.0.0-20241028200927-254fcfa98ad4 // indirect
 	golang.org/x/net v0.30.0 // indirect
 	golang.org/x/sys v0.26.0 // indirect
 	golang.org/x/text v0.19.0 // indirect

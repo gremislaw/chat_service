@@ -1,5 +1,7 @@
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+github.com/gremislaw/chat_service/api v0.0.0-20241028200927-254fcfa98ad4 h1:uUpF0na6fdoIeSGVwCjb+GwCrt9Pw1PufH5O84B0hF0=
+github.com/gremislaw/chat_service/api v0.0.0-20241028200927-254fcfa98ad4/go.mod h1:aG9gCFUd/p5uGwlKVRvjqTGjUrfWCNYnZgqZPUrGZFM=
 golang.org/x/net v0.30.0 h1:AcW1SDZMkb8IpzCdQUaIq2sP4sZ4zw+55h6ynffypl4=
 golang.org/x/net v0.30.0/go.mod h1:2wGyMJ5iFasEhkwi13ChkO/t1ECNC4X4eBKkVFyYFlU=
 golang.org/x/sys v0.26.0 h1:KHjCJyddX0LoSTb3J+vWpupP9p0oznkqVk/IfjymZbo=

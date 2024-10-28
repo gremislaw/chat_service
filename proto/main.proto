@@ -4,9 +4,9 @@ package chat_service.api;
 option go_package = "api/";
 
 message ChatMessage {
-  string message = 1;
-  int64 sender_id = 2;
-  int64 receiver_id = 3;
+  string body = 1;
+  string sender_name = 2;
+  string receiver_name = 3;
 }
 
 message Response {

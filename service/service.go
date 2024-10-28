@@ -2,7 +2,7 @@ package service
 
 import (
 	"fmt"
-	"time"
+	//"time"
 	"os"
 	"database/sql"
 	"chat_service/api"
@@ -26,10 +26,10 @@ type config struct {
 func NewService(db *sql.DB) api.ChatServiceServer {
 	service := ChatServiceServer{}
 
-	for i := 1; !isDBAvailable(db); i++ {
+	/*for i := 1; !isDBAvailable(db); i++ {
 		fmt.Printf("Db is unavailable(%ds)\n", i)
 		time.Sleep(5 * time.Second)
-	}
+	}*/
 	fmt.Println("Db is available")
 	service.db = db
 	return &service
